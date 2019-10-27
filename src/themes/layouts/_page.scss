@@ -1,0 +1,50 @@
+html {
+  min-height: 100%;
+  font-size: $font-size-base + px;
+
+  * {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  *:focus {
+    border: none;
+    outline: none;
+  }
+
+  body {
+    position: relative;
+    min-width: $mobileMinWidth;
+    min-height: 100vh;
+    padding: 0;
+    color: $color-blue-dark;
+    font-family: $font-family-base;
+
+    /* Smoothing for fonts */
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+
+    /**
+    * Fix for mobile safari for rotate screen
+    * autoprefixer don't do that
+    */
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+    #root {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .Layout {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+  }
+}
