@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: flex-start;
   flex-grow: 1;
-  margin: rem(58) 0;
+  margin: $headerHeight 0;
 
   nav {
     position: fixed;
@@ -20,7 +20,7 @@
   .Main {
     flex-direction: row;
     box-sizing: border-box;
-    margin: rem(54) 0 0 rem(80);
+    margin: $headerHeight 0 0 rem(80);
 
     nav {
       left: 0;
@@ -31,5 +31,4 @@
       border-right: 1px solid $color-grey-medium;
     }
   }
-
 }

@@ -1,8 +1,8 @@
-import React, { Context } from 'react'
+import React from 'react'
 
-interface IntersectionObserve {
-  observe(target: HTMLElement): void
-};
+// Interfaces
+import { IntersectionObserve } from '../../interfaces';
+
 
 const IntersectionObserverContext = React.createContext<IntersectionObserve | null>(null);
 

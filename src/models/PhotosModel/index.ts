@@ -1,6 +1,8 @@
-import { types } from 'mobx-state-tree';
+import { types, onPatch } from 'mobx-state-tree';
 
+// Utils
 import request from '../../utils/request';
+import api from '../../utils/api';
 
 // Models Types
 import AlbumModel from '../AlbumModel';
@@ -15,13 +17,12 @@ export const PhotosModel = types
     allLoaded: types.boolean,
   })
   .actions(self => ({
-    async afterCreate (): Promise<any> {
-      this.fetchAlbum();
-      this.fetchPhotos();
+    afterCreate (): void {
+      this.fetchChunk();
     },
     async fetchPhotos(): Promise<any> {
       try {
-        const { result }  = await request(`https://jsonplaceholder.typicode.com/photos?albumId=${self.currentAlbum}`);
+        const { result }  = await request(api.getPhotosByAlbum(self.currentAlbum));
         this.setPhotos(result);
       } catch(error) {
         console.log(error);
@@ -29,17 +30,25 @@ export const PhotosModel = types
     },
     async fetchAlbum(): Promise<any> {
       try {
-        const { result }  = await request(`https://jsonplaceholder.typicode.com/albums/${self.currentAlbum}`);
+        const { result }  = await request(api.getAlbumById(self.currentAlbum));
         this.setAlbum(result);
       } catch(error) {
         console.log(error);
       }
+    },
+    fetchChunk(): void {
+      if (self.allLoaded) return;
+      this.fetchAlbum();
+      this.fetchPhotos();
     },
     setPhotos(photos: any[]) {
       self.photos.push(...photos);
     },
     setAlbum(album: any) {
       self.albums.push(album);
+    },
+    tryLoadNext() {
+      self.currentAlbum += 1;
     },
   }))
   .views(self => ({
@@ -52,9 +61,19 @@ export const PhotosModel = types
   }));
 
 
-export default PhotosModel.create({
+const photos = PhotosModel.create({
   currentAlbum: 1,
   photos: [],
   albums: [],
   allLoaded: false,
 });
+
+onPatch(photos, patch => {
+  const { path }  = patch;
+  if (path === '/currentAlbum') {
+    photos.fetchChunk();
+    console.log(photos.currentAlbum);
+  }
+});
+
+export default photos;

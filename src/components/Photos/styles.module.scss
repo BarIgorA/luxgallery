@@ -5,7 +5,6 @@
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 6px;
-  // margin: 0 auto;
 
   .photo {
     padding-bottom: 100%;
@@ -15,4 +14,18 @@
       width: 100%;
     }
   }
+}
+
+.AlbumTitle {
+  display: flex;
+  justify-content: flex-start;
+  line-height: rem(24);
+  margin-left: rem(8);
+  font-size: $mobileFontSize;
+  text-transform: capitalize;
+}
+
+.AlbumsWrapper {
+  display: flex;
+  flex-direction: column;
 }

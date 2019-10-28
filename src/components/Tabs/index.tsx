@@ -4,7 +4,7 @@
 import React, { FC } from 'react';
 
 // Interfaces
-import { ITabs } from './interfaces';
+import { ITabs } from '../../interfaces';
 
 // Custom
 import Icon from '../Icon';

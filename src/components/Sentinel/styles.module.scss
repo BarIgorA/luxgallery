@@ -1,0 +1,22 @@
+@import '../../themes/vars';
+
+.Sentinel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: rem(250);
+  margin: 0 25% 10%;
+
+  .loading {
+    line-height: rem(32);
+    font-size: rem(32);
+  }
+}
+
+@include desktop {
+  .Sentinel {
+    height: rem(400);
+    margin: 0 35%;
+  }
+}
