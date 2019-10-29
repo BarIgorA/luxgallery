@@ -11,6 +11,7 @@ import Content from '../Content';
 // Models
 import appModel from '../../models/AppModel';
 import photos from '../../models/PhotosModel';
+import Modal from '../Modal';
 
 
 const App: FC = () => {
@@ -21,6 +22,15 @@ const App: FC = () => {
         <Tabs tabs={appModel.tabs} />
         <Content photos={photos} component={appModel.activeComponent} />
       </Main>
+      {
+        photos.photoToShow
+        ? (
+          <Modal>
+            <img src={photos.photoToShow.url} alt={photos.photoToShow.title}/>
+          </Modal>
+        )
+        : null
+      }
     </Layout>
   );
 }

@@ -1,15 +1,12 @@
 // Models Types
 import TabModel from '../models/TabModel';
-// import PhotoModel from '../models/PhotoModel';
+import PhotoModel from '../models/PhotoModel';
 import AlbumModel from '../models/AlbumModel';
 import { PhotosModel } from '../models/PhotosModel';
 
-export interface IChildren {
-  children: JSX.Element[] | JSX.Element;
-};
 
-export interface IntersectionObserve {
-  observe(target: HTMLElement): void
+export interface IChildren {
+  children: (JSX.Element | null)[] | JSX.Element | null;
 };
 
 export interface ITabs {
@@ -24,3 +21,9 @@ export interface IContent {
   photos: typeof PhotosModel.Type;
   component: string;
 };
+
+export interface IPhoto {
+  photo: typeof PhotoModel.Type;
+};
+
+export type TAlbum = typeof AlbumModel.Type;

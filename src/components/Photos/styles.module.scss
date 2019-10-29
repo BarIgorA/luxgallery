@@ -20,7 +20,7 @@
   display: flex;
   justify-content: flex-start;
   line-height: rem(24);
-  margin-left: rem(8);
+  margin: rem(16) 0 rem(8) rem(8);
   font-size: $mobileFontSize;
   text-transform: capitalize;
 }

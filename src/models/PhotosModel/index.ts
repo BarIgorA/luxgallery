@@ -14,6 +14,7 @@ export const PhotosModel = types
     currentAlbum: types.number,
     photos: types.array(PhotoModel),
     albums: types.array(AlbumModel),
+    selectedPhoto: types.optional(types.maybeNull(types.number), null),
     allLoaded: types.boolean,
   })
   .actions(self => ({
@@ -42,14 +43,25 @@ export const PhotosModel = types
       this.fetchPhotos();
     },
     setPhotos(photos: any[]) {
-      self.photos.push(...photos);
+      if (photos && Array.isArray(photos) && photos.length) {
+        self.photos.push(...photos);
+      } else {
+        self.allLoaded = true;
+      }
     },
     setAlbum(album: any) {
-      self.albums.push(album);
+      if (album &&album.id) {
+        self.albums.push(album);
+      } else {
+        self.allLoaded = true;
+      }
     },
     tryLoadNext() {
       self.currentAlbum += 1;
     },
+    selectPhoto(photoId: number) {
+      self.selectedPhoto = photoId;
+    }
   }))
   .views(self => ({
     get inStorePhotos() {
@@ -58,6 +70,16 @@ export const PhotosModel = types
     get inStoreAlbum() {
       return self.albums.map(album => album);
     },
+    get isAllLoaded() {
+      return self.allLoaded;
+    },
+    get photoToShow() {
+      if (self.selectedPhoto) {
+        return self.photos.find(photo => photo.id === self.selectedPhoto);
+      } else {
+        return null;
+      }
+    },
   }));
 
 
@@ -65,6 +87,7 @@ const photos = PhotosModel.create({
   currentAlbum: 1,
   photos: [],
   albums: [],
+  selectedPhoto: null,
   allLoaded: false,
 });
 

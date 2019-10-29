@@ -9,9 +9,9 @@ const PhotoModel = types
     title: types.string,
     url: types.string,
   })
-  .views(self => ({
-    getAlbum() {
-      return getParent(self, 2).albums.find((item: { id: number; }) => item.id === self.albumId);
+  .actions(self => ({
+    showMe: (id: number): void => {
+      getParent(self, 2).selectPhoto(id);
     },
   }));
 

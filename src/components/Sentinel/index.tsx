@@ -15,13 +15,12 @@ const Sentinel: React.FC<{callback(): void}> = ({ callback }) => {
         entries.forEach(entry => {
           if (entry.target === div && entry.isIntersecting) {
             callback();
-            console.log(`Sentinel says: There is intersection of album with viewport!`);
           }
         });
       },
       {
         root: null,
-        rootMargin: '0px 0px 50% 0px',
+        rootMargin: '0px 0px 200% 0px',
       },
     );
     if (div) {

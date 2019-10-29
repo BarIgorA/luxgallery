@@ -6,6 +6,7 @@ import { IPhotos } from '../../interfaces';
 
 // Custom
 import Sentinel from '../Sentinel';
+import Photo from '../Photo';
 
 // Styles
 import styles from './styles.module.scss';
@@ -27,16 +28,14 @@ const Photos: FC<IPhotos> = ({ data }) => {
             <div key={`photosOfAlbum${album.id}`} className={styles.Photos}>
               {photos
                 .filter(photo => photo.albumId === album.id)
-                .map(photo => (
-                  <div key={photo.id} className={styles.photo} >
-                    <img src={photo.thumbnailUrl} alt={photo.title} title={photo.title} />
-                  </div>
+                .map((photo) => (
+                  <Photo key={photo.id} photo={photo} />
               ))}
             </div>
           </Fragment>
         ))
       }
-      <Sentinel callback={sentinelCallback} />
+      {!data.isAllLoaded && <Sentinel callback={sentinelCallback} />}
     </div>
   )
 }

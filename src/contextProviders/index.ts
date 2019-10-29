@@ -1,6 +1,6 @@
-import IntersectionObserverContext from './IntersectionObserverContext';
+import PhotoInViewPortProvider from './PhotoInViewPortProvider';
 
 
 export default {
-  IntersectionObserverContext,
-}
+  PhotoInViewPortProvider,
+};

@@ -1,10 +1,7 @@
-import React from 'react'
-
-// Interfaces
-import { IntersectionObserve } from '../../interfaces';
+import React from 'react';
 
 
-const IntersectionObserverContext = React.createContext<IntersectionObserve | null>(null);
+const IntersectionObserverContext = React.createContext<IntersectionObserver | null>(null);
 
 
 export default IntersectionObserverContext;
