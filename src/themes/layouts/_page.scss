@@ -13,6 +13,9 @@ html {
     outline: none;
   }
 
+  overflow: scroll;
+  overflow-x: hidden;
+
   body {
     position: relative;
     min-width: $mobileMinWidth;
@@ -33,10 +36,29 @@ html {
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    -ms-overflow-style: none;  /* Disable scrollbar IE 10+ */
+    scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
+
 
     #root {
       width: 100%;
       min-height: 100vh;
+    }
+
+    & > div[id^="modal"] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      & > div:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+        background-color: black;
+      }
     }
 
     .Layout {
@@ -46,5 +68,16 @@ html {
       margin: 0 auto;
       min-height: 100vh;
     }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+@-moz-document url-prefix() { /* Disable scrollbar Firefox */
+  html{
+    scrollbar-width: none;
   }
 }

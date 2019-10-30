@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, memo } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import logo from '../../assets/luxoft.svg';
 
@@ -14,13 +14,14 @@ const Sentinel: React.FC<{callback(): void}> = ({ callback }) => {
       (entries) => {
         entries.forEach(entry => {
           if (entry.target === div && entry.isIntersecting) {
+            console.log('Intersection');
             callback();
           }
         });
       },
       {
         root: null,
-        rootMargin: '0px 0px 200% 0px',
+        rootMargin: '0px 0px 0px 0px',
       },
     );
     if (div) {
@@ -43,4 +44,4 @@ const Sentinel: React.FC<{callback(): void}> = ({ callback }) => {
 }
 
 
-export default memo(Sentinel);
+export default Sentinel;

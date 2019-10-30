@@ -17,7 +17,6 @@ const Photos: FC<IPhotos> = ({ data }) => {
 
   const photos = data.inStorePhotos;
   const albums = data.inStoreAlbum;
-  const sentinelCallback = () => data.tryLoadNext();
 
   return (
     <div className={styles.AlbumsWrapper}>
@@ -35,7 +34,7 @@ const Photos: FC<IPhotos> = ({ data }) => {
           </Fragment>
         ))
       }
-      {!data.isAllLoaded && <Sentinel callback={sentinelCallback} />}
+      {!data.isAllLoaded && <Sentinel callback={data.tryLoadNext} />}
     </div>
   )
 }

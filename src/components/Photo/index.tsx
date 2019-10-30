@@ -1,4 +1,4 @@
-import React, { FC, useContext, useRef, useEffect } from 'react';
+import React, { FC, useContext, useRef, useEffect, useCallback } from 'react';
 
 // Interfaces
 import { IPhoto } from '../../interfaces';
@@ -14,6 +14,12 @@ const Photo: FC<IPhoto> = ({ photo }) => {
   const { thumbnailUrl, id, title, showMe } = photo;
   const ref = useRef<HTMLDivElement | null>(null);
   const observerInContext = useContext(IntersectionObserverContext);
+  const onClick = useCallback(
+    () => {
+      showMe(id)
+    },
+    [id, showMe],
+  );
 
   useEffect(() => {
     const observer = observerInContext;
@@ -35,7 +41,7 @@ const Photo: FC<IPhoto> = ({ photo }) => {
         src=''
         alt={title}
         title={title}
-        onClick={() => showMe(id)}
+        onClick={onClick}
       />
     </div>
   )

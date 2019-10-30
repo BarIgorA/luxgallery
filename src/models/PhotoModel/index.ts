@@ -13,6 +13,9 @@ const PhotoModel = types
     showMe: (id: number): void => {
       getParent(self, 2).selectPhoto(id);
     },
+    hideMe: (): void => {
+      getParent(self, 2).deselectPhoto();
+    },
   }));
 
 

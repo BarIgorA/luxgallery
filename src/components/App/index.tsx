@@ -11,9 +11,12 @@ import Content from '../Content';
 // Models
 import appModel from '../../models/AppModel';
 import photos from '../../models/PhotosModel';
-import Modal from '../Modal';
+import ModalPhoto from '../ModalPhoto';
 
-
+/**
+ * Module App
+ * Just declaration UI and provide data
+ */
 const App: FC = () => {
   return (
     <Layout>
@@ -22,15 +25,7 @@ const App: FC = () => {
         <Tabs tabs={appModel.tabs} />
         <Content photos={photos} component={appModel.activeComponent} />
       </Main>
-      {
-        photos.photoToShow
-        ? (
-          <Modal>
-            <img src={photos.photoToShow.url} alt={photos.photoToShow.title}/>
-          </Modal>
-        )
-        : null
-      }
+      <ModalPhoto photo={photos.photoToShow} />
     </Layout>
   );
 }

@@ -26,4 +26,8 @@ export interface IPhoto {
   photo: typeof PhotoModel.Type;
 };
 
+export interface IModalPhoto {
+  photo: typeof PhotoModel.Type | null | undefined;
+};
+
 export type TAlbum = typeof AlbumModel.Type;

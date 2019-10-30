@@ -8,6 +8,8 @@ import api from '../../utils/api';
 import AlbumModel from '../AlbumModel';
 import PhotoModel from '../PhotoModel';
 
+// Model for DI
+
 
 export const PhotosModel = types
   .model('PhotosModel', {
@@ -30,11 +32,13 @@ export const PhotosModel = types
       }
     },
     async fetchAlbum(): Promise<any> {
-      try {
-        const { result }  = await request(api.getAlbumById(self.currentAlbum));
-        this.setAlbum(result);
-      } catch(error) {
-        console.log(error);
+      if (!self.albums.find(album => album.id === self.currentAlbum)) {
+        try {
+          const { result }  = await request(api.getAlbumById(self.currentAlbum));
+          this.setAlbum(result);
+        } catch(error) {
+          console.log(error);
+        }
       }
     },
     fetchChunk(): void {
@@ -50,7 +54,7 @@ export const PhotosModel = types
       }
     },
     setAlbum(album: any) {
-      if (album &&album.id) {
+      if (album && album.id) {
         self.albums.push(album);
       } else {
         self.allLoaded = true;
@@ -61,7 +65,10 @@ export const PhotosModel = types
     },
     selectPhoto(photoId: number) {
       self.selectedPhoto = photoId;
-    }
+    },
+    deselectPhoto() {
+      self.selectedPhoto = null;
+    },
   }))
   .views(self => ({
     get inStorePhotos() {
