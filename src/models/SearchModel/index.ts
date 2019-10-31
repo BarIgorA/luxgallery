@@ -10,16 +10,11 @@ const SearchModel = types.model('SearchModel', {
   takeLatest(e: any): void {
     e.persist();
 
-    if (e.target.value.length < 3) {
-      window.clearTimeout(self.oldTimer);
-      return;
-    }
-
     this.setTimer(
       window.setTimeout(() => {
         this.setSearchTerm(e.target.value.trim());
       },
-      1200),
+      2500),
     );
 
     window.clearTimeout();

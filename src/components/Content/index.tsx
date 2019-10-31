@@ -15,6 +15,7 @@ const Content: FC<IContent> = ({ photos, component }) => {
   const Component: FC<IPhotos> = lazy<any>(() => import(`../${component}`));
   const Provider = PhotoInViewPortProvider.provider;
   const value = PhotoInViewPortProvider.value;
+
   return (
     <div className={styles.Content}>
       <Provider value={value} >

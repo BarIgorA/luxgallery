@@ -31,3 +31,5 @@ export interface IModalPhoto {
 };
 
 export type TAlbum = typeof AlbumModel.Type;
+
+export type TPhoto = typeof PhotoModel.Type;

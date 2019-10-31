@@ -55,8 +55,10 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         width: 100%;
         min-height: 100vh;
+        color: $color-grey-light;
         background-color: black;
       }
     }

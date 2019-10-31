@@ -1,12 +1,12 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC, lazy, Suspense } from 'react';
 import { observer } from 'mobx-react';
 
 // Interfaces
 import { IPhotos } from '../../interfaces';
 
 // Custom
-import Sentinel from '../Sentinel';
-import Photo from '../Photo';
+import Sentinel from './Sentinel';
+import ByAlbums from './ByAlbums';
 
 // Styles
 import styles from './styles.module.scss';
@@ -17,24 +17,24 @@ const Photos: FC<IPhotos> = ({ data }) => {
 
   const photos = data.inStorePhotos;
   const albums = data.inStoreAlbum;
+  const SearchResults = lazy(() => import('./SearchResults'));
 
   return (
-    <div className={styles.AlbumsWrapper}>
+    <div className={styles.Photos}>
       {
-        albums.map(album => (
-          <Fragment key={album.id}>
-            <div key={`album${album.id}`} className={styles.AlbumTitle}>{album.title}</div>
-            <div key={`photosOfAlbum${album.id}`} className={styles.Photos}>
-              {photos
-                .filter(photo => photo.albumId === album.id)
-                .map((photo) => (
-                  <Photo key={photo.id} photo={photo} />
-              ))}
-            </div>
-          </Fragment>
-        ))
+        data.searchTerm
+          ? (
+              <Suspense fallback="loading...">
+                <SearchResults photos={photos} searchTerm={data.searchTerm} isAllLoaded={data.isAllLoaded} />
+              </Suspense>
+            )
+          : <ByAlbums photos={photos} albums={albums} />
       }
-      {!data.isAllLoaded && <Sentinel callback={data.tryLoadNext} />}
+      {
+        !data.isAllLoaded && (
+          <Sentinel callback={data.tryLoadNext} album={data.lastLoadedAlbum} isLoading={data.isLoading} />
+        )
+      }
     </div>
   )
 }

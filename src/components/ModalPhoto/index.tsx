@@ -21,6 +21,7 @@ const ModalPhoto:FC<IModalPhoto> = ({ photo }) => {
           alt={photo.title}
           onClick={photo.hideMe}
         />
+        <div className={styles.title}>{photo.title}</div>
       </Portal>
     </Suspense>
   )
