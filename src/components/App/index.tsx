@@ -11,7 +11,6 @@ import Content from '../Content';
 // Models
 import appModel from '../../models/AppModel';
 import photos from '../../models/PhotosModel';
-import ModalPhoto from '../ModalPhoto';
 
 /**
  * Module App
@@ -20,12 +19,11 @@ import ModalPhoto from '../ModalPhoto';
 const App: FC = () => {
   return (
     <Layout>
-      <Header />
+      <Header {...appModel.activeTab} />
       <Main>
         <Tabs tabs={appModel.tabs} />
         <Content photos={photos} component={appModel.activeComponent} />
       </Main>
-      <ModalPhoto photo={photos.photoToShow} />
     </Layout>
   );
 }

@@ -17,7 +17,6 @@ export const PhotosModel = types
     currentAlbum: types.number,
     photos: types.array(PhotoModel),
     albums: types.array(AlbumModel),
-    selectedPhoto: types.optional(types.maybeNull(types.number), null),
     allLoaded: types.boolean,
     loading: types.boolean,
   })
@@ -65,12 +64,6 @@ export const PhotosModel = types
     tryLoadNext() {
       if (!self.loading) self.currentAlbum += 1;
     },
-    selectPhoto(photoId: number) {
-      self.selectedPhoto = photoId;
-    },
-    deselectPhoto() {
-      self.selectedPhoto = null;
-    },
     setLoading(state: boolean) {
       self.loading = state;
     },
@@ -79,18 +72,14 @@ export const PhotosModel = types
     get inStorePhotos() {
       return self.photos.map(photo => photo);
     },
-    get inStoreAlbum() {
+    get inStoreAlbums() {
       return self.albums.filter(album => album.loaded);
+    },
+    get AllAlbums() {
+      return self.albums.map(albums => albums);
     },
     get isAllLoaded() {
       return self.allLoaded;
-    },
-    get photoToShow() {
-      if (self.selectedPhoto) {
-        return self.photos.find(photo => photo.id === self.selectedPhoto);
-      } else {
-        return null;
-      }
     },
     get searchTerm(): string {
       return getEnv(self).search.searchTerm
@@ -108,7 +97,6 @@ const photos = PhotosModel.create({
   currentAlbum: 1,
   photos: [],
   albums: [],
-  selectedPhoto: null,
   allLoaded: false,
   loading: false,
 }, { search });
@@ -117,7 +105,6 @@ onPatch(photos, patch => {
   const { path }  = patch;
   if (path === '/currentAlbum') {
     photos.fetchChunk();
-    console.log(photos.currentAlbum);
   }
 });
 

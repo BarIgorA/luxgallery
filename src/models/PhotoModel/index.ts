@@ -1,4 +1,4 @@
-import { types, getParent } from 'mobx-state-tree';
+import { types } from 'mobx-state-tree';
 
 
 const PhotoModel = types
@@ -8,15 +8,22 @@ const PhotoModel = types
     thumbnailUrl: types.string,
     title: types.string,
     url: types.string,
+    expanded: false,
   })
   .actions(self => ({
-    showMe: (id: number): void => {
-      getParent(self, 2).selectPhoto(id);
+    showMe: (): void => {
+      self.expanded = true;
     },
     hideMe: (): void => {
-      getParent(self, 2).deselectPhoto();
+      self.expanded = false;
     },
-  }));
+  }))
+  .views(self => ({
+    get isPhotoExpanded() {
+      return self.expanded;
+    },
+  })
+  );
 
 
 export default PhotoModel;

@@ -23,7 +23,7 @@ const SearchResults: FC<{ photos: TPhoto[], searchTerm: string, isAllLoaded: boo
   ), [isAllLoaded]);
 
   return (
-    <div className={styles.Photos}>
+    <div className={styles.Grid}>
       {
         filteredPhotos.length
         ? filteredPhotos.map((photo) => (

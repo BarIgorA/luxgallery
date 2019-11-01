@@ -1,10 +1,13 @@
-import React, { FC, useContext, useRef, useEffect, useCallback } from 'react';
+import React, { FC, useContext, useRef, useEffect } from 'react';
 
 // Interfaces
 import { IPhoto } from '../../interfaces';
 
 // Context
 import IntersectionObserverContext from '../../contextProviders/IntersectionObserverContext';
+
+// Custom
+import ModalPhoto from '../ModalPhoto';
 
 // Styles
 import styles from './styles.module.scss';
@@ -14,12 +17,6 @@ const Photo: FC<IPhoto> = ({ photo }) => {
   const { thumbnailUrl, id, title, showMe } = photo;
   const ref = useRef<HTMLDivElement | null>(null);
   const observerInContext = useContext(IntersectionObserverContext);
-  const onClick = useCallback(
-    () => {
-      showMe(id)
-    },
-    [id, showMe],
-  );
 
   useEffect(() => {
     const observer = observerInContext;
@@ -41,8 +38,9 @@ const Photo: FC<IPhoto> = ({ photo }) => {
         src=''
         alt={title}
         title={title}
-        onClick={onClick}
+        onClick={showMe}
       />
+      <ModalPhoto photo={photo} />
     </div>
   )
 }

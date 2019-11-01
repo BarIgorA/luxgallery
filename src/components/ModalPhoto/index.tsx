@@ -1,4 +1,5 @@
 import React, { FC, lazy, Suspense } from 'react';
+import { observer } from 'mobx-react';
 
 // Interfaces
 import { IModalPhoto } from '../../interfaces';
@@ -8,7 +9,7 @@ import styles from './styles.module.scss';
 
 
 const ModalPhoto:FC<IModalPhoto> = ({ photo }) => {
-  if (!photo) return null;
+  if (!photo || !photo.isPhotoExpanded) return null;
 
   const Portal = lazy(() => import('./Portal'));
 
@@ -27,4 +28,4 @@ const ModalPhoto:FC<IModalPhoto> = ({ photo }) => {
   )
 }
 
-export default ModalPhoto;
+export default observer(ModalPhoto);

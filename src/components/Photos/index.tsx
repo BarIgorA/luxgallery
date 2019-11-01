@@ -6,7 +6,7 @@ import { IPhotos } from '../../interfaces';
 
 // Custom
 import Sentinel from './Sentinel';
-import ByAlbums from './ByAlbums';
+import PhotosByAlbums from '../PhotosByAlbums';
 
 // Styles
 import styles from './styles.module.scss';
@@ -16,7 +16,8 @@ const Photos: FC<IPhotos> = ({ data }) => {
   if (!data.photos.length || !data.albums.length) return null;
 
   const photos = data.inStorePhotos;
-  const albums = data.inStoreAlbum;
+  const albums = data.inStoreAlbums;
+
   const SearchResults = lazy(() => import('./SearchResults'));
 
   return (
@@ -28,11 +29,11 @@ const Photos: FC<IPhotos> = ({ data }) => {
                 <SearchResults photos={photos} searchTerm={data.searchTerm} isAllLoaded={data.isAllLoaded} />
               </Suspense>
             )
-          : <ByAlbums photos={photos} albums={albums} />
+          : <PhotosByAlbums photos={photos} albums={albums} />
       }
       {
         !data.isAllLoaded && (
-          <Sentinel callback={data.tryLoadNext} album={data.lastLoadedAlbum} isLoading={data.isLoading} />
+          <Sentinel callback={data.tryLoadNext} isLoading={data.isLoading} />
         )
       }
     </div>

@@ -9,6 +9,7 @@
   position: fixed;
   background-color: $color-blue-light;
   color: $color-grey-light;
+  z-index: 2;
 
   h1 {
     display: flex;
@@ -43,6 +44,18 @@
       .active {
         background-color: $color-white;
       }
+    }
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    font-size: rem(24);
+
+    &::after {
+      content: '';
+      width: rem(90);
     }
   }
 }

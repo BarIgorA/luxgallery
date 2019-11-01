@@ -22,14 +22,20 @@ export interface IContent {
   component: string;
 };
 
+export type TAlbum = typeof AlbumModel.Type;
+
+export type TPhoto = typeof PhotoModel.Type;
+
+export type TTab = typeof TabModel.Type;
+
 export interface IPhoto {
-  photo: typeof PhotoModel.Type;
+  photo: TPhoto;
+};
+
+export interface IAlbum {
+  album: TAlbum;
 };
 
 export interface IModalPhoto {
   photo: typeof PhotoModel.Type | null | undefined;
 };
-
-export type TAlbum = typeof AlbumModel.Type;
-
-export type TPhoto = typeof PhotoModel.Type;

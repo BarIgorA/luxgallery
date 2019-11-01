@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import styles from './styles.module.scss';
 
 
-const Sentinel: React.FC<{callback(): void, album: number, isLoading: boolean}> = ({ callback, album, isLoading }) => {
+const Sentinel: React.FC<{callback(): void, isLoading: boolean}> = ({ callback, isLoading }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const div = ref.current;
@@ -13,7 +13,6 @@ const Sentinel: React.FC<{callback(): void, album: number, isLoading: boolean}> 
         (entries) => {
           entries.forEach(entry => {
             if (entry.target === div && entry.isIntersecting) {
-              console.log(`Intersection`);
               callback();
             }
           });
@@ -33,7 +32,6 @@ const Sentinel: React.FC<{callback(): void, album: number, isLoading: boolean}> 
   return (
     <div ref={ref} className={styles.Sentinel} >
       <div className={styles.loading} >Loading...</div>
-      <div>{`${album} albums loaded.`}</div>
     </div>
   );
 }

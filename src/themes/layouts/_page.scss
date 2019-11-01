@@ -50,6 +50,7 @@ html {
       top: 0;
       left: 0;
       width: 100%;
+      z-index: 100;
 
       & > div:first-child {
         display: flex;

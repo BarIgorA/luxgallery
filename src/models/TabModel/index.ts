@@ -8,6 +8,7 @@ const TabModel = types
     title: types.string,
     icon: types.string,
     component: types.string,
+    showSearch: types.boolean,
   })
   .actions(self => ({
     setActive: (e: MouseEvent): void => {
