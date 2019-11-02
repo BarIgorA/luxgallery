@@ -76,11 +76,14 @@ export const PhotosModel = types
     setUISwitched(state: boolean): void {
       self.UISwitched = state;
     },
+    falseUISwitched(): void {
+      getEnv(self).search.falseUISwitched();
+    },
   }))
   .views(self => ({
     get inStorePhotos() {
-      if (self.UISwitched) {
-        return self.photos.filter(photo => photo.albumId < 10);
+      if (self.UISwitched || getEnv(self).search.UISwitched) {
+        return self.photos.filter(photo => photo.albumId < 25);
       }
       return self.photos.map(photo => photo);
     },
@@ -118,6 +121,7 @@ onPatch(photos, patch => {
   const { path }  = patch;
   if (path === '/currentAlbum') {
     photos.setUISwitched(false);
+    photos.falseUISwitched();
     photos.fetchChunk();
   }
 });

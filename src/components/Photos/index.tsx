@@ -31,11 +31,12 @@ const Photos: FC<IPhotos> = ({ data }) => {
             )
           : <PhotosByAlbums photos={photos} albums={albums} />
       }
-      {
-        !data.isAllLoaded && (
-          <Sentinel callback={data.tryLoadNext} isLoading={data.isLoading} album={data.lastLoadedAlbum} />
-        )
-      }
+      <Sentinel
+        callback={data.tryLoadNext}
+        isLoading={data.isLoading}
+        album={data.lastLoadedAlbum}
+        isAllLoaded={data.isAllLoaded}
+      />
     </div>
   )
 }
