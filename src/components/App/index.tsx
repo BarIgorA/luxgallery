@@ -10,7 +10,6 @@ import Content from '../Content';
 
 // Models
 import appModel from '../../models/AppModel';
-import photos from '../../models/PhotosModel';
 
 /**
  * Module App
@@ -22,7 +21,7 @@ const App: FC = () => {
       <Header {...appModel.activeTab} />
       <Main>
         <Tabs tabs={appModel.tabs} />
-        <Content photos={photos} component={appModel.activeComponent} />
+        <Content photos={appModel.photos} component={appModel.activeComponent} />
       </Main>
     </Layout>
   );

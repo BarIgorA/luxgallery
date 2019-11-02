@@ -33,7 +33,7 @@ const Photos: FC<IPhotos> = ({ data }) => {
       }
       {
         !data.isAllLoaded && (
-          <Sentinel callback={data.tryLoadNext} isLoading={data.isLoading} />
+          <Sentinel callback={data.tryLoadNext} isLoading={data.isLoading} album={data.lastLoadedAlbum} />
         )
       }
     </div>

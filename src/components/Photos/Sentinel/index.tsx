@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import styles from './styles.module.scss';
 
 
-const Sentinel: React.FC<{callback(): void, isLoading: boolean}> = ({ callback, isLoading }) => {
+const Sentinel: React.FC<{callback(): void, isLoading: boolean, album: number}> = ({ callback, isLoading, album }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const div = ref.current;
@@ -32,6 +32,7 @@ const Sentinel: React.FC<{callback(): void, isLoading: boolean}> = ({ callback, 
   return (
     <div ref={ref} className={styles.Sentinel} >
       <div className={styles.loading} >Loading...</div>
+      <div>{`${album} albums loaded`}</div>
     </div>
   );
 }

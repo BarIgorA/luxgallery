@@ -19,11 +19,12 @@ export const PhotosModel = types
     albums: types.array(AlbumModel),
     allLoaded: types.boolean,
     loading: types.boolean,
+    UISwitched: types.boolean,
   })
   .actions(self => ({
     afterCreate (): void {
       this.fetchAlbums();
-      this.fetchChunk()
+      this.fetchChunk();
     },
     async fetchPhotos(): Promise<any> {
       try {
@@ -31,7 +32,9 @@ export const PhotosModel = types
         const { result }  = await request(api.getPhotosByAlbum(self.currentAlbum));
         this.setPhotos(result);
         const album = self.albums.find(album => album.id === self.currentAlbum);
-        if (album) album.setLoaded();
+        if (album) {
+          album.setLoaded();
+        }
       } catch(error) {
         console.log(error);
       } finally {
@@ -40,7 +43,6 @@ export const PhotosModel = types
     },
     async fetchAlbums(): Promise<any> {
       try {
-        this.setLoading(true);
         const { result }  = await request(api.getAllAlbums());
         this.setAlbums(result);
       } catch(error) {
@@ -49,6 +51,10 @@ export const PhotosModel = types
     },
     fetchChunk(): void {
       if (self.allLoaded) return;
+      if (!self.albums.length) {
+        setTimeout(this.fetchChunk, 10);
+        return;
+      }
       this.fetchPhotos();
     },
     setPhotos(photos: any[]) {
@@ -67,9 +73,15 @@ export const PhotosModel = types
     setLoading(state: boolean) {
       self.loading = state;
     },
+    setUISwitched(state: boolean): void {
+      self.UISwitched = state;
+    },
   }))
   .views(self => ({
     get inStorePhotos() {
+      if (self.UISwitched) {
+        return self.photos.filter(photo => photo.albumId < 10);
+      }
       return self.photos.map(photo => photo);
     },
     get inStoreAlbums() {
@@ -98,12 +110,14 @@ const photos = PhotosModel.create({
   photos: [],
   albums: [],
   allLoaded: false,
-  loading: false,
+  loading: true,
+  UISwitched: false,
 }, { search });
 
 onPatch(photos, patch => {
   const { path }  = patch;
   if (path === '/currentAlbum') {
+    photos.setUISwitched(false);
     photos.fetchChunk();
   }
 });

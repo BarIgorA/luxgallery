@@ -1,7 +1,11 @@
-import { types } from 'mobx-state-tree';
+import { types, getEnv } from 'mobx-state-tree';
 
 // Models Types
 import TabModel from '../TabModel';
+import { PhotosModel } from '../PhotosModel';
+
+// Models
+import photos from '../PhotosModel';
 
 
 export const AppModel = types.model('AppModel', {
@@ -11,6 +15,9 @@ export const AppModel = types.model('AppModel', {
 .actions(self => ({
   setActive: (id: number): void => {
     self.activeTabIndex = id;
+    if (id === 0) {
+      getEnv(self).photos.setUISwitched(true);
+    }
   },
 }))
 .views(self => ({
@@ -19,6 +26,9 @@ export const AppModel = types.model('AppModel', {
   },
   get activeTab() {
     return self.tabs[self.activeTabIndex];
+  },
+  get photos(): typeof PhotosModel.Type {
+    return getEnv(self).photos;
   },
 }));
 
@@ -41,5 +51,8 @@ export default AppModel.create(
         showSearch: false,
       },
     ],
+  },
+  {
+    photos,
   },
 );

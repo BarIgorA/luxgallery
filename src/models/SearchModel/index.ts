@@ -1,4 +1,4 @@
-import { types, onPatch } from 'mobx-state-tree';
+import { types } from 'mobx-state-tree';
 
 
 const SearchModel = types.model('SearchModel', {
@@ -36,7 +36,3 @@ const search = SearchModel.create({
 
 
 export default search;
-
-onPatch(search, patch => {
-  console.log('Search: ', patch);
-});
