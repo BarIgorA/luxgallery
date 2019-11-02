@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.module.scss"],"names":[],"mappings":"AAAA,sBACE,YAAa,CACb,qBAAsB,CACtB,eAAgB,CAChB,WAAY","file":"20.e8465bf0.chunk.css","sourcesContent":[".Photos {\n  display: flex;\n  flex-direction: column;\n  min-height: 100%;\n  height: 100%;\n}\n"]}

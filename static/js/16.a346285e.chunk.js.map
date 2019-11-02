@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/ModalPhoto/styles.module.scss"],"names":["module","exports"],"mappings":"6FACAA,EAAOC,QAAU,CAAC,eAAiB,+BAA+B,MAAQ","file":"static/js/16.a346285e.chunk.js","sourcesContent":["// extracted by mini-css-extract-plugin\nmodule.exports = {\"ResizableImage\":\"styles_ResizableImage__1hPNU\",\"title\":\"styles_title__2VxPG\"};"],"sourceRoot":""}

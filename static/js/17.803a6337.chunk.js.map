@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Photo/styles.module.scss"],"names":["module","exports"],"mappings":"6FACAA,EAAOC,QAAU,CAAC,MAAQ,sBAAsB,UAAY","file":"static/js/17.803a6337.chunk.js","sourcesContent":["// extracted by mini-css-extract-plugin\nmodule.exports = {\"Photo\":\"styles_Photo__XcYKp\",\"lazyImage\":\"styles_lazyImage__2NZD4\"};"],"sourceRoot":""}

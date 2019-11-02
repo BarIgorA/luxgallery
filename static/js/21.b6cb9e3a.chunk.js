@@ -1,0 +1,2 @@
+(this.webpackJsonpluxgallery=this.webpackJsonpluxgallery||[]).push([[21],{77:function(l,s,e){l.exports={PhotosByAlbums:"styles_PhotosByAlbums__1ZleE",albumWrapper:"styles_albumWrapper__2jbaQ",albumTitle:"styles_albumTitle__2hqAI",grid:"styles_grid__1CGkw",photo:"styles_photo__3vI7G"}}}]);
+//# sourceMappingURL=21.b6cb9e3a.chunk.js.map

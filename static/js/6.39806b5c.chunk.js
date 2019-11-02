@@ -1,0 +1,2 @@
+(this.webpackJsonpluxgallery=this.webpackJsonpluxgallery||[]).push([[6,14],{24:function(t,e,l){"use strict";l.r(e);var a=l(0),n=l.n(a),s=l(79),u=l.n(s);e.default=function(t){var e=t.album;return n.a.createElement("div",{className:u.a.Album},n.a.createElement("button",{type:"button",className:u.a.title,onClick:e.expandMe},e.title))}},79:function(t,e,l){t.exports={Album:"styles_Album__3DRrf",title:"styles_title__3rEhG"}}}]);
+//# sourceMappingURL=6.39806b5c.chunk.js.map

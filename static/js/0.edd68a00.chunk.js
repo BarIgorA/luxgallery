@@ -1,0 +1,2 @@
+(this.webpackJsonpluxgallery=this.webpackJsonpluxgallery||[]).push([[0],{22:function(e,r,t){"use strict";t.r(r);var n=t(13),c=t(0),u=function(){var e=Object(c.useRef)(document.createElement("div"));return Object(c.useEffect)((function(){var r=e.current,t=document.querySelector("#modal");return t&&t.appendChild(e.current),function(){r.remove()}}),[]),e.current};r.default=function(e){var r=e.children,t=u();return Object(n.createPortal)(r,t)}}}]);
+//# sourceMappingURL=0.edd68a00.chunk.js.map
