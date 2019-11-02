@@ -1,0 +1,86 @@
+html {
+  min-height: 100%;
+  font-size: $font-size-base + px;
+
+  * {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  *:focus {
+    border: none;
+    outline: none;
+  }
+
+  overflow: scroll;
+  overflow-x: hidden;
+
+  body {
+    position: relative;
+    min-width: $mobileMinWidth;
+    min-height: 100vh;
+    padding: 0;
+    color: $color-blue-dark;
+    font-family: $font-family-base;
+
+    /* Smoothing for fonts */
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+
+    /**
+    * Fix for mobile safari for rotate screen
+    * autoprefixer don't do that
+    */
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: none;  /* Disable scrollbar IE 10+ */
+    scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
+
+
+    #root {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    & > div[id^="modal"] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+
+      & > div:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+        color: $color-grey-light;
+        background-color: black;
+      }
+    }
+
+    .Layout {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+@-moz-document url-prefix() { /* Disable scrollbar Firefox */
+  html{
+    scrollbar-width: none;
+  }
+}

@@ -1,0 +1,42 @@
+@import '../../themes/vars';
+.Albums {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin: rem(8);
+
+  .closeAlbum {
+    position: fixed;
+    width: rem(40);
+    height: rem(40);
+    top: rem(20);
+    right: rem(40);
+    border: 1px solid $color-grey-medium;
+    border-radius: 50%;
+    background-color: $color-grey-light;
+    z-index: 3;
+  }
+
+  .grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: rem(6);
+    margin: rem(6) auto;
+  }
+
+  @include desktop {
+    margin: rem(16);
+
+    .closeAlbum {
+      top: rem(60);
+      right: rem(60);
+    }
+
+    .grid {
+      grid-gap: rem(75);
+    }
+  }
+}

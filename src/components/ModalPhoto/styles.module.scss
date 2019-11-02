@@ -1,0 +1,12 @@
+@import '../../themes/vars';
+
+.ResizableImage {
+  max-width:100%;
+  height: auto;
+}
+
+.title {
+  display: block;
+  margin: rem(16);
+  font-size: $mobileFontSize;
+}

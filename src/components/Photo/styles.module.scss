@@ -1,0 +1,17 @@
+@import '../../themes/vars';
+
+.Photo {
+  padding-bottom: 100%;
+  height: 0;
+  background-color: $color-grey-medium;
+
+  img.lazyImage {
+    display: none;
+    width: 100%;
+
+    &[class*="loaded"] {
+      display: block;
+    }
+  }
+}
+

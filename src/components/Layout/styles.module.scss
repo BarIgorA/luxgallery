@@ -1,0 +1,11 @@
+@import '../../themes/theme-default.scss';
+
+.Layout {
+  background-color: $color-white;
+}
+
+@include desktop {
+  .Layout {
+    max-width: $desktopMaxWidth;
+  }
+}
