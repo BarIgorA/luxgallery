@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2a38134e0518ebc3ce900afd7e0e1efa",
+    "revision": "daa385feb9a58c3208d0b37e9918ece8",
     "url": "/luxgallery/index.html"
   },
   {
@@ -76,7 +76,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/luxgallery/static/css/9.14a71c4c.chunk.css"
   },
   {
-    "revision": "18a668ee4b7d589951e4",
+    "revision": "b6ae9ac70880bd694d77",
     "url": "/luxgallery/static/css/main.0d9264b1.chunk.css"
   },
   {
@@ -160,8 +160,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/luxgallery/static/js/9.8a939e42.chunk.js"
   },
   {
-    "revision": "18a668ee4b7d589951e4",
-    "url": "/luxgallery/static/js/main.972427ad.chunk.js"
+    "revision": "b6ae9ac70880bd694d77",
+    "url": "/luxgallery/static/js/main.dbe84916.chunk.js"
   },
   {
     "revision": "11cbfcb4e35c9af12429",

@@ -30,8 +30,8 @@
     "static/js/9.8a939e42.chunk.js": "/luxgallery/static/js/9.8a939e42.chunk.js",
     "static/js/9.8a939e42.chunk.js.map": "/luxgallery/static/js/9.8a939e42.chunk.js.map",
     "main.css": "/luxgallery/static/css/main.0d9264b1.chunk.css",
-    "main.js": "/luxgallery/static/js/main.972427ad.chunk.js",
-    "main.js.map": "/luxgallery/static/js/main.972427ad.chunk.js.map",
+    "main.js": "/luxgallery/static/js/main.dbe84916.chunk.js",
+    "main.js.map": "/luxgallery/static/js/main.dbe84916.chunk.js.map",
     "runtime-main.js": "/luxgallery/static/js/runtime-main.f64a00e6.js",
     "runtime-main.js.map": "/luxgallery/static/js/runtime-main.f64a00e6.js.map",
     "static/js/12.617582c2.chunk.js": "/luxgallery/static/js/12.617582c2.chunk.js",
@@ -64,7 +64,7 @@
     "static/js/21.b6cb9e3a.chunk.js": "/luxgallery/static/js/21.b6cb9e3a.chunk.js",
     "static/js/21.b6cb9e3a.chunk.js.map": "/luxgallery/static/js/21.b6cb9e3a.chunk.js.map",
     "index.html": "/luxgallery/index.html",
-    "precache-manifest.8283721c459087ac2b9475a5bafaeac2.js": "/luxgallery/precache-manifest.8283721c459087ac2b9475a5bafaeac2.js",
+    "precache-manifest.c46e3e64dd77d348948b8b91a8ee777f.js": "/luxgallery/precache-manifest.c46e3e64dd77d348948b8b91a8ee777f.js",
     "service-worker.js": "/luxgallery/service-worker.js",
     "static/css/1.9f63cd60.chunk.css.map": "/luxgallery/static/css/1.9f63cd60.chunk.css.map",
     "static/css/13.4ff5fff2.chunk.css.map": "/luxgallery/static/css/13.4ff5fff2.chunk.css.map",
@@ -90,6 +90,6 @@
     "static/js/runtime-main.f64a00e6.js",
     "static/js/12.617582c2.chunk.js",
     "static/css/main.0d9264b1.chunk.css",
-    "static/js/main.972427ad.chunk.js"
+    "static/js/main.dbe84916.chunk.js"
   ]
 }
